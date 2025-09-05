@@ -4,3 +4,6 @@ accessible class net/minecraft/client/render/BackgroundRenderer$FogData
 accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogStart F
 accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogEnd F
 accessible field net/minecraft/client/render/BackgroundRenderer$FogData fogShape Lnet/minecraft/client/render/FogShape;
+
+accessible method net/minecraft/client/render/Camera setRotation (FF)V
+accessible method net/minecraft/client/render/Camera setPos (Lnet/minecraft/util/math/Vec3d;)V

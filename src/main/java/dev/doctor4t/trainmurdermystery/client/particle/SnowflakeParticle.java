@@ -39,7 +39,7 @@ public class SnowflakeParticle extends SpriteBillboardParticle {
 		this.angleRandY = (world.random.nextFloat() * 2 - 1) * .1f;
 		this.angleRandZ = (world.random.nextFloat() * 2 - 1) * .1f;
 
-		this.maxAge = 30 + world.random.nextInt(10);
+		this.maxAge = 40 + world.random.nextInt(20);
 		this.scale = .1f + world.random.nextFloat() * .1f;
 		this.alpha = 0f;
 

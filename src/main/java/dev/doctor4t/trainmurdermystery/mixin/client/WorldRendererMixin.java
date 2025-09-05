@@ -10,6 +10,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.GlUniform;
 import net.minecraft.client.gl.ShaderProgram;
 import net.minecraft.client.gl.VertexBuffer;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.chunk.ChunkBuilder;
 import net.minecraft.util.math.BlockPos;
