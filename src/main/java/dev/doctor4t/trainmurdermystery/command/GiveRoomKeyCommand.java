@@ -18,7 +18,7 @@ import java.util.List;
 public class GiveRoomKeyCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
-                CommandManager.literal("giveRoomKey")
+                CommandManager.literal("tmm:giveRoomKey")
                         .requires(source -> source.hasPermissionLevel(2))
                         .then(
                                 CommandManager.argument("roomName", StringArgumentType.string())

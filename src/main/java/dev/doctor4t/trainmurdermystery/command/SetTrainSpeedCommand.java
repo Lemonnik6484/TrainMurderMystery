@@ -10,7 +10,7 @@ import net.minecraft.server.command.ServerCommandSource;
 public class SetTrainSpeedCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(
-                CommandManager.literal("setTrainSpeed")
+                CommandManager.literal("tmm:setTrainSpeed")
                         .requires(source -> source.hasPermissionLevel(2))
                         .then(
                                 CommandManager.argument("speed", IntegerArgumentType.integer())

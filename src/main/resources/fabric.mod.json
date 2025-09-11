@@ -34,7 +34,8 @@
 	"accessWidener" : "trainmurdermystery.accesswidener",
 	"custom": {
 		"cardinal-components": [
-			"trainmurdermystery:train"
+			"trainmurdermystery:train",
+			"trainmurdermystery:role"
 		]
 	},
 	"depends": {

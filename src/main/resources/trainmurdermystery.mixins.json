@@ -15,6 +15,7 @@
     "client.ClientPlayerEntityMixin",
     "client.ClientWorldMixin",
     "client.CreativeInventoryScreenMixin",
+    "client.GameOptionsMixin",
     "client.HandledScreenMixin",
     "client.KeyBindingMixin",
     "client.MinecraftClientMixin",

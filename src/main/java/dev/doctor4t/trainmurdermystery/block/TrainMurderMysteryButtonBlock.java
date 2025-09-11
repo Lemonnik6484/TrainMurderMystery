@@ -56,30 +56,7 @@ public abstract class TrainMurderMysteryButtonBlock extends ButtonBlock {
 
     @Override
     public void powerOn(BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
-        if (state.get(ACTIVE)) {
-            if (!world.isClient) {
-                Iterable<BlockPos> iterable = BlockPos.iterateOutwards(pos, 5, 5, 5);
-                for (BlockPos blockPos : iterable) {
-                    if (blockPos.equals(pos)) {
-                        continue;
-                    }
-                    if (this.tryOpenDoors(world, blockPos)) {
-                        break;
-                    }
-                }
-            }
-        } else {
-            world.playSound(player, pos, TrainMurderMysterySounds.BLOCK_BUTTON_TOGGLE_NO_POWER, SoundCategory.BLOCKS, 0.1f, 1f);
-        }
         super.powerOn(state, world, pos, player);
-    }
-
-    private boolean tryOpenDoors(World world, BlockPos pos) {
-        if (world.getBlockEntity(pos) instanceof SmallDoorBlockEntity entity) {
-            entity.toggle(false);
-            return true;
-        }
-        return false;
     }
 
     @Override
