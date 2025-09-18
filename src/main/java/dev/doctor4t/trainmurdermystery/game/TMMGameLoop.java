@@ -85,7 +85,7 @@ public class TMMGameLoop {
                 for (ServerPlayerEntity player : serverWorld.getPlayers()) {
                     player.sendMessage(Text.translatable("game.win." + winStatus.name().toLowerCase(Locale.ROOT)), true);
                 }
-                gameComponent.stop();
+                stopGame(serverWorld);
             }
         }
     }
