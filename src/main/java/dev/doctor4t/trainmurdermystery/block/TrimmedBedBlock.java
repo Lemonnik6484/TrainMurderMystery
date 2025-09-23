@@ -137,6 +137,8 @@ public class TrimmedBedBlock extends BedBlock {
         }
     }
 
+
+
     @Override
     public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
         super.onLandedUpon(world, state, pos, entity, fallDistance * 0.5f);

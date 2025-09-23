@@ -25,6 +25,8 @@ public class PlayerPoisonComponent implements AutoSyncedComponent, ServerTicking
     public int poisonTicks = -1;
     private int initialPoisonTicks = 0;
     private int poisonPulseCooldown = 0;
+    public float pulseProgress = 0f;
+    public boolean pulsing = false;
 
     public PlayerPoisonComponent(PlayerEntity player) {
         this.player = player;
@@ -38,6 +40,8 @@ public class PlayerPoisonComponent implements AutoSyncedComponent, ServerTicking
         this.poisonTicks = -1;
         this.poisonPulseCooldown = 0;
         this.initialPoisonTicks = 0;
+        this.pulseProgress = 0f;
+        this.pulsing = false;
         this.sync();
     }
 
@@ -57,7 +61,7 @@ public class PlayerPoisonComponent implements AutoSyncedComponent, ServerTicking
             if (this.poisonPulseCooldown <= 0) {
                 this.poisonPulseCooldown = dynamicCooldown;
 
-                PoisonUtils.startPulse(this.poisonTicks);
+                this.pulsing = true;
 
                 float minVolume = 0.5f;
                 float maxVolume = 1f;

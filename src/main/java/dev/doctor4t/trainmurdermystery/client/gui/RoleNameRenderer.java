@@ -23,7 +23,7 @@ public class RoleNameRenderer {
         if (result instanceof EntityHitResult entityHitResult && entityHitResult.getEntity() instanceof PlayerEntity target) {
             nametagAlpha = MathHelper.lerp(tickCounter.getTickDelta(true) / 4, nametagAlpha, 1f);
             nametag = target.getDisplayName();
-            if (component.isHitman(player)) {
+            if (component.isHitman(target)) {
                 targetRole = TrainRole.HITMAN;
             } else {
                 targetRole = TrainRole.BYSTANDER;

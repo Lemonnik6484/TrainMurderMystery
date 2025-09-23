@@ -96,6 +96,11 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         }
     }
 
+    @Inject(method = "wakeUp(ZZ)V", at = @At("HEAD"))
+    private void tmm$poisonSleep(boolean skipSleepTimer, boolean updateSleepingPlayers, CallbackInfo ci) {
+        PoisonUtils.bedFunc((PlayerEntity) (Object) this);
+    }
+
     @Inject(method = "canConsume(Z)Z", at = @At("HEAD"), cancellable = true)
     private void tmm$allowEatingRegardlessOfHunger(boolean ignoreHunger, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(true);
