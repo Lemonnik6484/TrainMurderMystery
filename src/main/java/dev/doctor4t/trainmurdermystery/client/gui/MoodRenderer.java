@@ -111,8 +111,6 @@ public class MoodRenderer {
             context.getMatrices().translate(0, arrowProgress * 4, 0);
             context.drawSprite(7, 6, 0, 10, 13, context.guiAtlasManager.getSprite(arrow), 1f, 1f, 1f, (float) Math.sin(Math.abs(arrowProgress) * Math.PI));
             context.getMatrices().pop();
-        } else if (component.getMood() > moodRender) {
-            arrowProgress = 1f;
         }
         context.getMatrices().pop();
         context.getMatrices().push();
