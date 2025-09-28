@@ -20,11 +20,9 @@ public class PlateBlockEntityRenderer implements BlockEntityRenderer<BeveragePla
 
     @Override
     public void render(@NotNull BeveragePlateBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-        var state = entity.getCachedState();
-        if (state == null) return;
-        if (state.isOf(TMMBlocks.DRINK_TRAY)) {
+        if (entity.isDrink()) {
             this.renderDrinks(entity, matrices, vertexConsumers, light, overlay);
-        } else if (state.isOf(TMMBlocks.FOOD_PLATTER)) {
+        } else {
             this.renderFood(entity, matrices, vertexConsumers, light, overlay);
         }
     }

@@ -23,6 +23,7 @@ import java.util.List;
 public class BeveragePlateBlockEntity extends BlockEntity {
     private final List<ItemStack> storedItems = new ArrayList<>();
     private String poisoner = null;
+    private PlateType plate = PlateType.DRINK;
 
     public BeveragePlateBlockEntity(BlockPos pos, BlockState state) {
         super(TMMBlockEntities.BEVERAGE_PLATE, pos, state);
@@ -67,6 +68,15 @@ public class BeveragePlateBlockEntity extends BlockEntity {
         this.sync();
     }
 
+    public boolean isDrink() {
+        return this.plate == PlateType.DRINK;
+    }
+
+    public void setDrink(boolean drink) {
+        this.plate = drink ? PlateType.DRINK : PlateType.FOOD;
+        this.sync();
+    }
+
     @Override
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
@@ -76,6 +86,7 @@ public class BeveragePlateBlockEntity extends BlockEntity {
         }
         nbt.put("Items", itemsNbt);
         if (this.poisoner != null) nbt.putString("poisoner", this.poisoner);
+        nbt.putBoolean("Drink", this.plate == PlateType.DRINK);
     }
 
     @Override
@@ -90,6 +101,7 @@ public class BeveragePlateBlockEntity extends BlockEntity {
             }
         }
         if (nbt.contains("poisoner")) this.poisoner = nbt.getString("poisoner");
+        this.plate = nbt.getBoolean("Drink") ? PlateType.DRINK : PlateType.FOOD;
     }
 
     @Override
@@ -100,5 +112,10 @@ public class BeveragePlateBlockEntity extends BlockEntity {
     @Override
     public @Nullable Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    public enum PlateType {
+        DRINK,
+        FOOD
     }
 }

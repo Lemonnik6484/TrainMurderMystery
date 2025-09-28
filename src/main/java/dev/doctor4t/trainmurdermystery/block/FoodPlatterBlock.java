@@ -40,7 +40,9 @@ public class FoodPlatterBlock extends BlockWithEntity {
 
     @Override
     public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new BeveragePlateBlockEntity(pos, state);
+        var plate = new BeveragePlateBlockEntity(pos, state);
+        plate.setDrink(false);
+        return plate;
     }
 
     @Override

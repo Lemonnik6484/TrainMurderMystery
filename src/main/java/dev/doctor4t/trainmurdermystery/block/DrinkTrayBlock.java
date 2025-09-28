@@ -1,7 +1,9 @@
 package dev.doctor4t.trainmurdermystery.block;
 
 import com.mojang.serialization.MapCodec;
+import dev.doctor4t.trainmurdermystery.block_entity.BeveragePlateBlockEntity;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
@@ -25,6 +27,13 @@ public class DrinkTrayBlock extends FoodPlatterBlock {
     @Override
     protected MapCodec<? extends BlockWithEntity> getCodec() {
         return CODEC;
+    }
+
+    @Override
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        var plate = new BeveragePlateBlockEntity(pos, state);
+        plate.setDrink(true);
+        return plate;
     }
 
     @Override
