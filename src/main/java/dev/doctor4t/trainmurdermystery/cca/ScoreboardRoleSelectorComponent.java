@@ -30,6 +30,11 @@ public class ScoreboardRoleSelectorComponent implements AutoSyncedComponent {
         this.server = server;
     }
 
+    public void reset() {
+        this.killerRounds.clear();
+        this.vigilanteRounds.clear();
+    }
+
     public void assignKillers(ServerWorld world, GameWorldComponent gameComponent, @NotNull List<ServerPlayerEntity> players, int killerCount) {
         var map = new HashMap<ServerPlayerEntity, Float>();
         var total = 0f;
@@ -52,10 +57,7 @@ public class ScoreboardRoleSelectorComponent implements AutoSyncedComponent {
                 }
             }
         }
-        for (var player : killers) {
-//            player.giveItemStack(new ItemStack(TMMItems.KNIFE));
-            gameComponent.addKiller(player);
-        }
+        for (var player : killers) gameComponent.addKiller(player);
 //        gameComponent.addKiller(UUID.fromString("2793cdc6-7710-4e7e-9d81-cf918e067729"));
     }
 
@@ -82,9 +84,7 @@ public class ScoreboardRoleSelectorComponent implements AutoSyncedComponent {
                 }
             }
         }
-        for (var player : vigilantes) {
-            player.giveItemStack(new ItemStack(TMMItems.REVOLVER));
-        }
+        for (var player : vigilantes) player.giveItemStack(new ItemStack(TMMItems.REVOLVER));
     }
 
     @Override
