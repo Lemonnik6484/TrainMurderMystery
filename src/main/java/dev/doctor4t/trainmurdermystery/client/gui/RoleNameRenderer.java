@@ -28,7 +28,7 @@ public class RoleNameRenderer {
 
     public static void renderHud(TextRenderer renderer, @NotNull ClientPlayerEntity player, DrawContext context, RenderTickCounter tickCounter) {
         var component = TMMComponents.GAME.get(player.getWorld());
-        if (player.getWorld().getLightLevel(LightType.BLOCK, BlockPos.ofFloored(player.getEyePos())) < 2) {
+        if (player.getWorld().getLightLevel(BlockPos.ofFloored(player.getEyePos())) < 3) {
             return;
         }
         if (ProjectileUtil.getCollision(player, entity -> entity instanceof PlayerEntity, 2f) instanceof EntityHitResult entityHitResult && entityHitResult.getEntity() instanceof PlayerEntity target) {
