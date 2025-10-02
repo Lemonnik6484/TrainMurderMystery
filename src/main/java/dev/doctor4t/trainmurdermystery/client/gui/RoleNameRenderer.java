@@ -62,6 +62,7 @@ public class RoleNameRenderer {
         }
         if (ProjectileUtil.getCollision(player, entity -> entity instanceof NoteEntity, range) instanceof EntityHitResult entityHitResult && entityHitResult.getEntity() instanceof NoteEntity note) {
             noteAlpha = MathHelper.lerp(tickCounter.getTickDelta(true) / 4, noteAlpha, 1f);
+            nametagAlpha = MathHelper.lerp(tickCounter.getTickDelta(true), nametagAlpha, 0f);
             RoleNameRenderer.note[0] = Text.literal(note.getLines()[0]);
             RoleNameRenderer.note[1] = Text.literal(note.getLines()[1]);
             RoleNameRenderer.note[2] = Text.literal(note.getLines()[2]);

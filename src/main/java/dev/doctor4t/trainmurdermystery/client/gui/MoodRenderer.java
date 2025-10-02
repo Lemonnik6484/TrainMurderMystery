@@ -165,7 +165,7 @@ public class MoodRenderer {
         context.getMatrices().push();
         context.getMatrices().translate(26, 8 + renderer.fontHeight, 0);
         var duration = Math.max(1f, component.getPsychoTicks() - tickCounter.getTickDelta(true)) / GameConstants.PSYCHO_TIMER;
-        context.getMatrices().scale((60) * duration, 1, 1);
+        context.getMatrices().scale(150 * duration, 1, 1);
         context.fill(0, 0, 1, 1, colour | ((int) (0.9f * 255) << 24));
         context.getMatrices().pop();
         context.getMatrices().pop();
