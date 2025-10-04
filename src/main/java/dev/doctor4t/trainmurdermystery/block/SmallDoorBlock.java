@@ -146,10 +146,6 @@ public class SmallDoorBlock extends DoorPartBlock {
             if (player.isCreative()) {
                 return open(state, world, entity, lowerPos);
             } else {
-                if (player.getMainHandStack().isOf(TMMItems.REVOLVER)) {
-                    return ActionResult.PASS;
-                }
-
                 boolean requiresKey = !entity.getKeyName().isEmpty();
                 boolean hasLockpick = player.getMainHandStack().isOf(TMMItems.LOCKPICK);
 
