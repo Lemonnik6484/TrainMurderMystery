@@ -89,6 +89,7 @@ public class GameWorldComponent implements AutoSyncedComponent, ClientTickingCom
 
     public void setFade(int fade) {
         this.fade = MathHelper.clamp(fade, 0, GameConstants.FADE_TIME + GameConstants.FADE_PAUSE);
+        this.sync();
     }
 
     public void setGameStatus(GameStatus gameStatus) {

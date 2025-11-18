@@ -50,7 +50,9 @@ public class AutoStartComponent implements AutoSyncedComponent, CommonTickingCom
                 this.sync();
             }
         } else {
-            this.setTime(this.startTime);
+            if (this.world.getTime() % 20 == 0) {
+                this.setTime(this.startTime);
+            }
         }
     }
 
