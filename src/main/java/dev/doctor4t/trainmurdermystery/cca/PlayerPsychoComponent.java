@@ -2,12 +2,14 @@ package dev.doctor4t.trainmurdermystery.cca;
 
 import dev.doctor4t.trainmurdermystery.TMM;
 import dev.doctor4t.trainmurdermystery.game.GameConstants;
+import dev.doctor4t.trainmurdermystery.game.GameFunctions;
 import dev.doctor4t.trainmurdermystery.index.TMMItems;
 import dev.doctor4t.trainmurdermystery.util.ShopEntry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.util.Hand;
 import org.jetbrains.annotations.NotNull;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
 import org.ladysnake.cca.api.v3.component.ComponentRegistry;
@@ -39,10 +41,12 @@ public class PlayerPsychoComponent implements AutoSyncedComponent, ServerTicking
         if (this.psychoTicks <= 0) return;
         this.psychoTicks--;
         if (this.player.getMainHandStack().isOf(TMMItems.BAT)) return;
-        for (var i = 0; i < 9; i++) {
-            if (!this.player.getInventory().getStack(i).isOf(TMMItems.BAT)) continue;
-            this.player.getInventory().selectedSlot = i;
-            break;
+        if (GameFunctions.isPlayerAliveAndSurvival(player)) {
+            for (var i = 0; i < 9; i++) {
+                if (!this.player.getInventory().getStack(i).isOf(TMMItems.BAT)) continue;
+                this.player.getInventory().selectedSlot = i;
+                break;
+            }
         }
     }
 
@@ -86,7 +90,7 @@ public class PlayerPsychoComponent implements AutoSyncedComponent, ServerTicking
     }
 
     public int getPsychoTicks() {
-        return this.psychoTicks;
+        return player.isCreative() && player.getStackInHand(Hand.MAIN_HAND).isOf(TMMItems.BAT) ? 9999 : this.psychoTicks;
     }
 
     public void setPsychoTicks(int ticks) {
